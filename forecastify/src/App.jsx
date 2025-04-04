@@ -1,12 +1,14 @@
-import './App.css'
+import "./App.css";
+import Navbar from "./components/Navbar";
 
-function App() {
-
+export default function App() {
   return (
-    <>
-    hello
-    </>
-  )
+    <div className="box-border font-mono-Monaco ">
+      <Navbar />
+    </div>
+  );
 }
 
-export default App
+
+
+
