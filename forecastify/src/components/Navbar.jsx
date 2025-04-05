@@ -1,8 +1,8 @@
-export default function Navbar({ locations, query, onQuery }) {
+export default function Navbar({ locations, query, onQuery, onSelId, selId }) {
   return (
     <header className="bg-[#BBAB8C] grid grid-cols-5 gap-2 p-3">
       <Logo />
-      <Search locations={locations} query={query} onQuery={onQuery} />
+      <Search locations={locations} query={query} onQuery={onQuery} onSelId={onSelId} selId={selId}/>
     </header>
   );
 }
@@ -11,7 +11,7 @@ function Logo() {
   return (
     <div className="flex">
       <img
-        src="/src/assets/icon.png"
+        src="/icon.png"
         alt="forecastify logo"
         className="size-20"
       />
@@ -23,13 +23,13 @@ function Logo() {
   );
 }
 
-function Search({ locations, query, onQuery }) {
+function Search({ locations, query, onQuery, onSelId, selId }) {
   return (
     <div className="flex justify-center items-center col-span-3 relative">
       <>
         <div className="flex border rounded-md items-center p-1">
           <img
-            src="/src/assets/mag.svg"
+            src="/mag.svg"
             alt="search icon"
             className="h-8 p-1"
           />
@@ -41,25 +41,27 @@ function Search({ locations, query, onQuery }) {
             onChange={(e) => onQuery(e.target.value)}
           />
         </div>
-        {(locations?.length || 0) > 0 && <SearchRes locations={locations} />}
+        {!selId && (locations?.length || 0) > 0 && <SearchRes locations={locations} onSelId={onSelId} />}
       </>
     </div>
   );
 }
 
-function SearchRes({ locations }) {
+
+
+function SearchRes({ locations,selId,onSelId }) {
   return (
-    <div className="border border-gray-400 bg-white absolute z-10 w-110 top-18">
+    <div className="border border-gray-400 bg-white absolute z-10 w-110 top-15">
       {locations.map((loc) => (
-        <SearchData loc={loc} />
+        <SearchData loc={loc} key={loc.id} selId={selId} onSelId={onSelId} />
       ))}
     </div>
   );
 }
 
-function SearchData({ loc }) {
+function SearchData({ loc,onSelId }) {
   return (
-    <div className="border p-2 hover:bg-gray-200 border-gray-100">
+    <div className="border bg-[#FDF7E4] p-2 hover:bg-gray-200 border-gray-100" onClick={()=> onSelId(loc.id)}>
       {`${loc.name}${loc.name != loc.admin1 ? `, ${loc.admin1}` : ""}, ${loc.country}`}
     </div>
   );
