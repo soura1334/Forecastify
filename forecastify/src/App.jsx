@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import WeatherData from "./components/WeatherData"
+import WeatherData from "./components/WeatherData";
 
 export default function App() {
   const [locations, setLocations] = useState([]);
   const [query, setQuery] = useState("");
   const [selId, setSelId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [lastID, setLastID] = useState(null);
 
   useEffect(
     function () {
@@ -34,7 +35,6 @@ export default function App() {
       if (!query.length) {
         setLocations([]);
         setIsLoading(false);
-        setSelId(null);
         return;
       }
 
@@ -42,6 +42,14 @@ export default function App() {
     },
     [query]
   );
+
+  useEffect(()=> {
+    if(selId){
+      setLastID(selId);
+    }
+  }, [selId]);
+
+  const active = selId || lastID;
 
   function handleQuery(val) {
     setQuery(val);
@@ -59,10 +67,10 @@ export default function App() {
         onQuery={handleQuery}
         onSelId={handleSelId}
         selId={selId}
+        isLoading={isLoading}
       />
-      {<WeatherData locations={locations} selId={selId} />}
+      <WeatherData locations={locations} selId={selId} active={active} />
     </div>
   );
 }
-
 

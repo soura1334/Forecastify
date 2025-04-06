@@ -1,8 +1,10 @@
-export default function Navbar({ locations, query, onQuery, onSelId, selId }) {
+import Loader from "./Loader";
+
+export default function Navbar({ locations, query, onQuery, onSelId, selId, isLoading }) {
   return (
     <header className="bg-[#BBAB8C] grid grid-cols-5 gap-2 p-3">
       <Logo />
-      <Search locations={locations} query={query} onQuery={onQuery} onSelId={onSelId} selId={selId}/>
+      <Search locations={locations} query={query} onQuery={onQuery} onSelId={onSelId} selId={selId} isLoading={isLoading}/>
     </header>
   );
 }
@@ -23,7 +25,7 @@ function Logo() {
   );
 }
 
-function Search({ locations, query, onQuery, onSelId, selId }) {
+function Search({ locations, query, onQuery, onSelId, selId, isLoading }) {
   return (
     <div className="flex justify-center items-center col-span-3 relative">
       <>
@@ -41,7 +43,7 @@ function Search({ locations, query, onQuery, onSelId, selId }) {
             onChange={(e) => onQuery(e.target.value)}
           />
         </div>
-        {!selId && (locations?.length || 0) > 0 && <SearchRes locations={locations} onSelId={onSelId} />}
+        {!selId && (locations?.length || 0) > 0 && <SearchRes locations={locations} onSelId={onSelId} isLoading={isLoading}/>}
       </>
     </div>
   );
@@ -49,10 +51,10 @@ function Search({ locations, query, onQuery, onSelId, selId }) {
 
 
 
-function SearchRes({ locations,selId,onSelId }) {
+function SearchRes({ locations,selId,onSelId,isLoading }) {
   return (
     <div className="border border-gray-400 bg-white absolute z-10 w-110 top-15">
-      {locations.map((loc) => (
+      {isLoading ? <Loader cls="bg-[#FDF7E4] p-2 border border-gray-100" /> : locations.map((loc) => (
         <SearchData loc={loc} key={loc.id} selId={selId} onSelId={onSelId} />
       ))}
     </div>
@@ -66,3 +68,4 @@ function SearchData({ loc,onSelId }) {
     </div>
   );
 }
+
