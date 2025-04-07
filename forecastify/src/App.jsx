@@ -78,7 +78,7 @@ export default function App() {
 function Footer(){
   return <div className="bg-[#BBAB8C] bottom-0 p-3 text-center w-full">
     <p>Powered by <a href="https://open-meteo.com/">Open-Meteo</a> </p>
-    <p>&copy; 2025 Forecastify. All Rights Reserved</p>
+    <p>&copy; 2025 Forecastiify. All Rights Reserved</p>
   </div>
 }
 
