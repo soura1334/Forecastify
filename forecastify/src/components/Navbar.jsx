@@ -51,19 +51,24 @@ function Search({ locations, query, onQuery, onSelId, selId, isLoading }) {
 
 
 
-function SearchRes({ locations,selId,onSelId,isLoading }) {
+function SearchRes({ locations,selId,onSelId,isLoading}) {
   return (
     <div className="border border-gray-400 bg-white absolute z-10 w-110 top-15">
       {isLoading ? <Loader cls="bg-[#FDF7E4] p-2 border border-gray-100" /> : locations.map((loc) => (
-        <SearchData loc={loc} key={loc.id} selId={selId} onSelId={onSelId} />
+        <SearchData loc={loc} key={loc.id} selId={selId} onSelId={onSelId}/>
       ))}
     </div>
   );
 }
 
 function SearchData({ loc,onSelId }) {
+
+  function handleClick(){
+    onSelId(loc.id)
+  }
+
   return (
-    <div className="border bg-[#FDF7E4] p-2 hover:bg-gray-200 border-gray-100" onClick={()=> onSelId(loc.id)}>
+    <div className="border bg-[#FDF7E4] p-2 hover:bg-gray-200 border-gray-100" onClick={handleClick}>
       {`${loc.name}${loc.name != loc.admin1 ? `, ${loc.admin1}` : ""}, ${loc.country}`}
     </div>
   );

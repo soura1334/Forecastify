@@ -97,12 +97,10 @@ export default function WeatherCard({
 
   return (
     <>
-      {active && (
+      {active && (isLoading ? <Loader cls="h-[73vh] bg-[#DED0B6] m-5 content-center" /> : (
         <div className="bg-[#DED0B6] rounded-lg p-5 m-5 grid grid-cols-2 gap-10 h-[73vh]">
           <div className="border-none rounded-lg w-full bg-[#FAEED1] ">
-            {isLoading ? (
-              <Loader />
-            ) : (
+            {!isLoading && (
               <CardContent
                 imgText={imgText}
                 selectedLocation={selectedLocation}
@@ -122,7 +120,7 @@ export default function WeatherCard({
             </div>
           )}
         </div>
-      )}
+      ))}
     </>
   );
 }
