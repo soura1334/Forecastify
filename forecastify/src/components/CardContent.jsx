@@ -9,6 +9,7 @@ export default function CardContent({
   maxtemp,
   condn,
   date,
+  iconMap
 }) {
   const [name, setName] = useState(
     selectedLocation ? selectedLocation?.name : ""
@@ -67,7 +68,7 @@ export default function CardContent({
           <p className="text-sm mt-25">Last Updated: {timestr}</p>
         </div>
       </div>
-      <HourlyData hourly={hourly} />
+      <HourlyData hourly={hourly} iconMap={iconMap} />
     </>
   );
 }
