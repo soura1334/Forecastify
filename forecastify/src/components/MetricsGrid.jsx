@@ -13,10 +13,7 @@ const uvMap = {
 };
 
 export default function MetricsGrid({ wdata }) {
-  const curr = wdata.current;
-
-  console.log(curr.uv_index);
-
+  const curr = wdata && wdata.current;
   const { pressure_msl, uv_index, relative_humidity_2m, wind_gusts_10m } = curr
     ? curr
     : {
