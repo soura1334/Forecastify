@@ -1,7 +1,7 @@
 const iconMap = {
   0: "sunny",
-  1: "partly-cloudy",
-  2: "cloudy",
+  1: "sunny",
+  2: "partly-cloudy",
   3: "cloudy",
   45: "cloudy",
   48: "cloudy",
@@ -17,9 +17,11 @@ const iconMap = {
   73: "snowy",
   75: "snowy",
   77: "snowy",
-  80: "stormy",
-  81: "stormy",
-  82: "stormy",
+  80: "rainy",
+  81: "rainy",
+  82: "rainy",
+  85: "snowy",
+  86: "snowy",
   95: "stormy",
   96: "stormy",
   99: "stormy",
@@ -27,7 +29,7 @@ const iconMap = {
 
 export default function HourlyData({ hourly, timezone }) {
   return (
-    <div className="flex justify-between m-2 bg-[#DED0B6] border-none rounded-lg">
+    <div className="flex justify-between m-2 bg-[#DED0B6] border-none rounded-lg ">
       {Array.from({ length: 6 }, (_, i) => i).map((num) => (
         <HourlyWidget
           key={num}
@@ -44,7 +46,6 @@ function HourlyWidget({ index, hourly }) {
   const temp = hourly ? hourly.temperature_2m[index] : 0;
   const preci = hourly ? hourly.precipitation_probability[index] : 0;
   const iconURL = "/icons/" + ((hourly && hourly.is_day[index]) ? "day/" : "night/") + iconMap[hourly && hourly.weather_code[index]] + ".png";
-  console.log(iconURL)
 
   const now =
     hourly &&

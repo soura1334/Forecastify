@@ -1,11 +1,38 @@
 import Loader from "./Loader";
 import CardContent from "./CardContent";
+import MetricsGrid from "./MetricsGrid";
+
+const weathermap = {
+  0: "Sunny",
+  1: "Sunny",
+  2: "Partly Cloudy",
+  3: "Cloudy",
+  45: "Foggy",
+  48: "Foggy",
+  51: "Drizzle",
+  53: "Drizzle",
+  55: "Drizzle",
+  61: "Slight Rain",
+  63: "Moderate Rain",
+  65: "Heavy Rain",
+  66: "Slight Rain",
+  67: "Heavy Rain",
+  71: "Slight Snowfall",
+  73: "Moderate Snowfall",
+  75: "Heavy Snowfall",
+  77: "Snow Grains",
+  80: "Light Showers",
+  81: "Moderate Showers",
+  82: "Heavy Showers",
+  95: "Thunderstorms",
+  96: "Thunderstorms",
+  99: "Thunderstorms",
+};
 
 export default function WeatherCard({
   selectedLocation,
   isLoading,
   wdata,
-  weathermap,
   active,
 }) {
   let imgText = "";
@@ -36,11 +63,12 @@ export default function WeatherCard({
   else if (weathCode >= 51 && weathCode <= 67) imgText = "/rainy.png";
   else if (weathCode >= 71 && weathCode <= 77) imgText = "/snowy.png";
   else if (weathCode >= 80) imgText = "/rainy.png";
+  
   return (
     <>
       {active ? (
-        <div className="bg-[#DED0B6] border-none rounded-lg p-5 m-5 grid grid-cols-2 gap-10 h-[73vh]">
-          <div className="border-none rounded-lg w-full max-w-200 bg-[#FAEED1]">
+        <div className="bg-[#DED0B6] rounded-lg p-5 m-5 grid grid-cols-2 gap-10 ">
+          <div className="border-none rounded-lg w-full bg-[#FAEED1] ">
             {isLoading ? (
               <Loader />
             ) : (
@@ -55,7 +83,7 @@ export default function WeatherCard({
               />
             )}
           </div>
-          <div className="border w-full max-w-200">hello</div>
+          {!isLoading && <div className="rounded-lg w-full bg-[#FAEED1]"><MetricsGrid wdata={wdata} /></div>}
         </div>
       ) : (
         <Greet />
@@ -66,7 +94,7 @@ export default function WeatherCard({
 
 function Greet() {
   return (
-    <div className="bg-[#DED0B6] border-none rounded-lg p-5 m-5 text-center h-[75vh] content-center">
+    <div className="bg-[#DED0B6] border-none rounded-lg p-5 m-5 text-center p-57 content-center">
       <p className="text-4xl">Search a location to get started!</p>
     </div>
   );

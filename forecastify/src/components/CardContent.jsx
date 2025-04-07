@@ -30,12 +30,10 @@ export default function CardContent({
       minute: "2-digit",
     }).format(new Date(curr.time));
 
-  console.log(timestr)
-
   return (
     <>
       <div
-        className={`w-full max-w-200 aspect-[10/3] rounded-tl-lg rounded-tr-lg bg-cover bg-center px-4 py-2 flex justify-between`}
+        className={`w-full max-w-200 aspect-[10/3] rounded-tl-lg rounded-tr-lg bg-cover bg-center px-4 py-2 flex justify-between `}
         style={{ backgroundImage: `url(${imgText})` }}
       >
         <div>
