@@ -18,7 +18,7 @@ function Logo() {
         className="size-20"
       />
       <div className="ml-1">
-        <h1 className="text-4xl font-semibold">Forecastify</h1>
+        <h1 className="text-4xl font-semibold">Forecastiify</h1>
         <p className="mt-1">Your weather wingman</p>
       </div>
     </div>
