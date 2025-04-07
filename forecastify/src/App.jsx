@@ -60,7 +60,7 @@ export default function App() {
   }
 
   return (
-    <div className="box-border font-mono-Monaco bg-[#FDF7E4]">
+    <div className="box-border font-mono-Monaco bg-[#FDF7E4] flex flex-col min-h-screen ">
       <Navbar
         locations={locations}
         query={query}
@@ -69,14 +69,16 @@ export default function App() {
         selId={selId}
         isLoading={isLoading}
       />
+      <div className="flex-grow ">
       {active ? <WeatherData locations={locations} selId={selId} active={active} /> : <Greet />}
+      </div>
       <Footer />
     </div>
   );
 }
 
 function Footer(){
-  return <div className="bg-[#BBAB8C] bottom-0 p-3 text-center w-full">
+  return <div className="bg-[#BBAB8C] text-center w-full p-5">
     <p>Powered by <a href="https://open-meteo.com/">Open-Meteo</a> </p>
     <p>&copy; 2025 Forecastiify. All Rights Reserved</p>
   </div>
@@ -84,8 +86,8 @@ function Footer(){
 
 function Greet() {
   return (
-    <div className="bg-[#DED0B6] border-none rounded-lg p-5 m-5 text-center p-57 content-center">
-      <p className="text-4xl">Search a location to get started!</p>
+    <div className="bg-[#DED0B6] rounded-lg m-5 text-center content-center lg:h-120 h-160">
+      <p className="lg:text-4xl text-lg">Search a location to get started!</p>
     </div>
   );
 }

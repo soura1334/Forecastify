@@ -96,32 +96,36 @@ export default function WeatherCard({
   else if (weathCode >= 80) imgText = "/rainy.png";
 
   return (
-    <>
-      {active && (isLoading ? <Loader cls="h-[73vh] bg-[#DED0B6] m-5 content-center" /> : (
-        <div className="bg-[#DED0B6] rounded-lg p-5 m-5 grid grid-cols-2 gap-10 h-[73vh]">
-          <div className="border-none rounded-lg w-full bg-[#FAEED1] ">
+    <div className="flex flex-col ">
+      {active &&
+        (isLoading ? (
+          <div className="flex-grow flex items-center justify-center p-5 m-5 h-[70vh] bg-[#DED0B6] rounded-lg">
+            <Loader />
+          </div>
+        ) : (
+          <div className="bg-[#DED0B6] rounded-lg p-5 m-5 md:grid grid-cols-2 flex flex-col md:gap-10 ">
+            <div className="lg:rounded-lg rounded-t-lg w-full bg-[#FAEED1] ">
+              {!isLoading && (
+                <CardContent
+                  imgText={imgText}
+                  selectedLocation={selectedLocation}
+                  wdata={wdata}
+                  date={date}
+                  condn={condn}
+                  mintemp={mintemp}
+                  maxtemp={maxtemp}
+                  iconMap={iconMap}
+                />
+              )}
+            </div>
             {!isLoading && (
-              <CardContent
-                imgText={imgText}
-                selectedLocation={selectedLocation}
-                wdata={wdata}
-                date={date}
-                condn={condn}
-                mintemp={mintemp}
-                maxtemp={maxtemp}
-                iconMap={iconMap}
-              />
+              <div className="md:rounded-lg rounded-b-lg w-full bg-[#FAEED1] md:pt-2 pb-2 content-evenly flex flex-col ">
+                <MetricsGrid wdata={wdata} />
+                <SevenForecast wdata={wdata} iconMap={iconMap} />
+              </div>
             )}
           </div>
-          {!isLoading && (
-            <div className="rounded-lg w-full bg-[#FAEED1] content-evenly grid grid-cols-1 ">
-              <MetricsGrid wdata={wdata} />
-              <SevenForecast wdata={wdata} iconMap={iconMap} />
-            </div>
-          )}
-        </div>
-      ))}
-    </>
+        ))}
+    </div>
   );
 }
-

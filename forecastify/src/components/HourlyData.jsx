@@ -1,6 +1,6 @@
 export default function HourlyData({ hourly,iconMap }) {
   return (
-    <div className="flex justify-between m-2 bg-[#DED0B6] border-none rounded-lg ">
+    <div className="grid grid-cols-6 justify-between m-2 bg-[#DED0B6] rounded-lg ">
       {Array.from({ length: 6 }, (_, i) => i).map((num) => (
         <HourlyWidget
           key={num}
@@ -26,13 +26,13 @@ function HourlyWidget({ index, hourly, iconMap }) {
     }).format(new Date(hourly.time[index]));
 
   return (
-    <div className="m-4  text-center content-center ">
+    <div className="lg:m-5 m-2 text-center content-center lg:text-base text-xs">
       <p>{now}</p>
-      <img src={iconURL} className="h-15 my-2" alt="weather-icon" />
+      <img src={iconURL} className="lg:h-15 h-7 my-2" alt="weather-icon" />
       <p className="mb-3">{Math.round(temp)}&deg;C</p>
       <img
         src="/icons/precipitation.png"
-        className="h-11 justify-self-center "
+        className="lg:h-11 h-6 justify-self-center "
         alt="precipitation-icon"
       />
       <span>{preci}%</span>

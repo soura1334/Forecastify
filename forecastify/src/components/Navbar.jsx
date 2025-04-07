@@ -2,7 +2,7 @@ import Loader from "./Loader";
 
 export default function Navbar({ locations, query, onQuery, onSelId, selId, isLoading }) {
   return (
-    <header className="bg-[#BBAB8C] grid grid-cols-5 gap-2 p-3">
+    <header className="bg-[#BBAB8C] grid lg:grid-cols-5 grid-cols-1 gap-2 p-3">
       <Logo />
       <Search locations={locations} query={query} onQuery={onQuery} onSelId={onSelId} selId={selId} isLoading={isLoading}/>
     </header>
@@ -11,7 +11,7 @@ export default function Navbar({ locations, query, onQuery, onSelId, selId, isLo
 
 function Logo() {
   return (
-    <div className="flex">
+    <div className="flex lg:justify-normal justify-center">
       <img
         src="/icon.png"
         alt="forecastify logo"
@@ -38,7 +38,7 @@ function Search({ locations, query, onQuery, onSelId, selId, isLoading }) {
           <input
             type="text"
             placeholder="Search a location"
-            className="h-10 text-left p-2 w-100 focus:outline-none"
+            className="h-10 text-left p-2 lg:w-100 w-50 focus:outline-none"
             value={query}
             onChange={(e) => onQuery(e.target.value)}
           />
@@ -53,7 +53,7 @@ function Search({ locations, query, onQuery, onSelId, selId, isLoading }) {
 
 function SearchRes({ locations,selId,onSelId,isLoading}) {
   return (
-    <div className="border border-gray-400 bg-white absolute z-10 w-110 top-15">
+    <div className="border border-gray-400 bg-white absolute z-10 lg:w-110 w-60 lg:top-15 top-10">
       {isLoading ? <Loader cls="bg-[#FDF7E4] p-2 border border-gray-100" /> : locations.map((loc) => (
         <SearchData loc={loc} key={loc.id} selId={selId} onSelId={onSelId}/>
       ))}
@@ -68,7 +68,7 @@ function SearchData({ loc,onSelId }) {
   }
 
   return (
-    <div className="border bg-[#FDF7E4] p-2 hover:bg-gray-200 border-gray-100" onClick={handleClick}>
+    <div className="border bg-[#FDF7E4] p-2 hover:bg-gray-200 border-gray-100 lg:text-base text-xs" onClick={handleClick}>
       {`${loc.name}${loc.name != loc.admin1 ? `, ${loc.admin1}` : ""}, ${loc.country}`}
     </div>
   );

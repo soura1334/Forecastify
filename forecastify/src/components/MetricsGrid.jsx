@@ -26,7 +26,7 @@ export default function MetricsGrid({ wdata }) {
   let uv = Math.round(uv_index) <= 10 ? uvMap[Math.round(uv_index)] : "Extreme";
 
   return (
-    <div className="grid grid-cols-2 justify-items-center gap-2 px-2 ">
+    <div className="grid grid-cols-2 justify-items-center gap-2 px-2 pb-2 lg:text-base text-xs">
       <MetricData metric="pressure" val={pressure_msl + " mb"} />
       <MetricData metric="uV index" val={uv} />
       <MetricData metric="humidity" val={relative_humidity_2m + "%"} />
@@ -37,12 +37,12 @@ export default function MetricsGrid({ wdata }) {
 
 function MetricData({ metric, val }) {
   return (
-    <div className="rounded-lg p-4 w-full flex justify-between bg-[#DED0B6]">
-      <div className="capitalize flex gap-3">
-        <img src={`/icons/${metric}.png`} alt="metric_icon" className="h-7" />
-        <p>{metric}</p>
+    <div className="rounded-lg lg:p-4 p-1 w-full flex bg-[#DED0B6]  ">
+      <div className="capitalize flex lg:gap-3 gap-1 mr-1">
+        <img src={`/icons/${metric}.png`} alt="metric_icon" className="lg:h-7 h-5" />
+        <p>{`${metric}:`}</p>
       </div>
-      <p>{val}</p>
+      <p>{" " + val}</p>
     </div>
   );
 }
