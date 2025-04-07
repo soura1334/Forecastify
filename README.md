@@ -40,7 +40,7 @@ To run the project locally:
 
 ```bash
 git clone https://github.com/your-username/forecastiify.git
-cd forecastiify
+cd forecastify
 npm install
 npm run dev
 ```
