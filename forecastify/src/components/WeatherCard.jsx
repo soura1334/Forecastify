@@ -65,7 +65,8 @@ export default function WeatherCard({
   wdata,
   active,
 }) {
-  let imgText = "";
+  const isDay = wdata?.current?.is_day;
+  let imgText = isDay ? "" : "/night" ;
   const timeValue = wdata?.current?.time;
   const date =
     timeValue && !isNaN(new Date(timeValue))
@@ -88,12 +89,13 @@ export default function WeatherCard({
   const weathCode = wdata?.current?.weather_code;
 
   const condn = weatherMap[weathCode];
+  
 
-  if (weathCode === 0) imgText = "/sunny.png";
-  else if (weathCode >= 1 && weathCode <= 3) imgText = "/cloudy.png";
-  else if (weathCode >= 51 && weathCode <= 67) imgText = "/rainy.png";
-  else if (weathCode >= 71 && weathCode <= 77) imgText = "/snowy.png";
-  else if (weathCode >= 80) imgText = "/rainy.png";
+  if (weathCode === 0) imgText = imgText + "/sunny.png";
+  else if (weathCode >= 1 && weathCode <= 3) imgText = imgText + "/cloudy.png";
+  else if (weathCode >= 51 && weathCode <= 67) imgText = imgText + "/rainy.png";
+  else if (weathCode >= 71 && weathCode <= 77) imgText = imgText + "/snowy.png";
+  else if (weathCode >= 80) imgText = imgText + "/rainy.png";
 
   return (
     <div className="flex flex-col ">
@@ -115,6 +117,7 @@ export default function WeatherCard({
                   mintemp={mintemp}
                   maxtemp={maxtemp}
                   iconMap={iconMap}
+                  isDay = {isDay}
                 />
               )}
             </div>

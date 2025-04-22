@@ -10,6 +10,7 @@ export default function CardContent({
   condn,
   date,
   iconMap,
+  isDay
 }) {
   const [name, setName] = useState(
     selectedLocation ? selectedLocation?.name : ""
@@ -31,11 +32,13 @@ export default function CardContent({
       minute: "2-digit",
     }).format(new Date(curr.time));
 
+    const col = isDay ? "black" : "white" ;
+
   return (
     <>
       <div
         className={`w-full rounded-t-lg bg-cover bg-center px-4 py-2 flex gap-5 justify-between `}
-        style={{ backgroundImage: `url(${imgText})` }}
+        style={{ backgroundImage: `url(${imgText})`, color: col }}
       >
         <div>
           <div className="flex items-center gap-2">
@@ -45,6 +48,7 @@ export default function CardContent({
               id="Filled"
               viewBox="0 0 24 24"
               className="lg:h-6 h-4"
+              style={{fill: `${col}`}}
             >
               <path d="M12,.042a9.992,9.992,0,0,0-9.981,9.98c0,2.57,1.99,6.592,5.915,11.954a5.034,5.034,0,0,0,8.132,0c3.925-5.362,5.915-9.384,5.915-11.954A9.992,9.992,0,0,0,12,.042ZM12,14a4,4,0,1,1,4-4A4,4,0,0,1,12,14Z" />
             </svg>
