@@ -2,7 +2,7 @@ import Loader from "./Loader";
 
 export default function Navbar({ locations, query, onQuery, onSelId, selId, isLoading }) {
   return (
-    <header className="bg-[#BBAB8C] grid lg:grid-cols-5 grid-cols-1 gap-2 p-3">
+    <header className="bg-gradient-to-r from-[#BBAB8C] to-[#A08963] grid lg:grid-cols-5 grid-cols-1 gap-2 p-3">
       <Logo />
       <Search locations={locations} query={query} onQuery={onQuery} onSelId={onSelId} selId={selId} isLoading={isLoading}/>
     </header>

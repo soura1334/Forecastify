@@ -78,7 +78,7 @@ export default function App() {
 }
 
 function Footer(){
-  return <div className="bg-[#BBAB8C] text-center w-full p-5">
+  return <div className="bg-gradient-to-r from-[#BBAB8C] to-[#A08963] text-center w-full p-5">
     <p>Powered by <a href="https://open-meteo.com/">Open-Meteo</a> </p>
     <p>&copy; 2025 Forecastiify. All Rights Reserved</p>
   </div>
@@ -86,7 +86,7 @@ function Footer(){
 
 function Greet() {
   return (
-    <div className="bg-[#DED0B6] rounded-lg m-5 text-center content-center lg:h-120 h-160">
+    <div className="bg-linear-60 from-[#DED0B6] to-[#EBE5C2] rounded-lg m-5 text-center content-center lg:h-120 h-160">
       <p className="lg:text-4xl text-lg">Search a location to get started!</p>
     </div>
   );

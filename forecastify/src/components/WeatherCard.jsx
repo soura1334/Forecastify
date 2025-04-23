@@ -101,11 +101,11 @@ export default function WeatherCard({
     <div className="flex flex-col ">
       {active &&
         (isLoading ? (
-          <div className="flex-grow flex items-center justify-center p-5 m-5 h-[70vh] bg-[#DED0B6] rounded-lg">
+          <div className="flex-grow flex items-center justify-center p-5 m-5 h-[70vh] bg-linear-60 from-[#DED0B6] to-[#EBE5C2] rounded-lg">
             <Loader />
           </div>
         ) : (
-          <div className="bg-[#DED0B6] rounded-lg p-5 m-5 md:grid grid-cols-2 flex flex-col md:gap-10 ">
+          <div className="bg-linear-60 from-[#DED0B6] to-[#EBE5C2] rounded-lg p-5 m-5 md:grid grid-cols-2 flex flex-col md:gap-10 ">
             <div className="lg:rounded-lg rounded-t-lg w-full bg-[#FAEED1] ">
               {!isLoading && (
                 <CardContent
